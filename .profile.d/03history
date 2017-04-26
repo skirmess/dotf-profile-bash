@@ -1,0 +1,8 @@
+
+HISTFILESIZE=2048
+HISTCONTROL=ignoredups
+
+HISTSIZE=2048
+
+shopt -s histappend
+
