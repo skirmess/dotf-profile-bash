@@ -23,5 +23,5 @@ function find_git_branch {
 	git_branch=''
 }
 
-PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+PROMPT_COMMAND="find_git_branch; history -a; history -c; history -r"
 
