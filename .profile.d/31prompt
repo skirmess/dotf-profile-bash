@@ -2,8 +2,13 @@
 function find_git_branch {
 	local dir=. head
 	until [ "$dir" -ef / ]; do
-		if [ -f "$dir/.git/HEAD" ]; then
-			head=$(< "$dir/.git/HEAD")
+		local git_dir="$dir/.git"
+		if [ -f "$dir/.git" ]; then
+			git_dir=$(awk '$1=="gitdir:" {print $2}' "$dir/.git")
+		fi
+
+		if [ -f "$git_dir/HEAD" ]; then
+			head=$(< "$git_dir/HEAD")
 			if [[ $head == ref:\ refs/heads/* ]]; then
 				git_branch="(${head#*/*/}) "
 			elif [[ $head != '' ]]; then
